@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>守护天使名号计算器｜潮汐纪年社</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <script type="module" crossorigin src="./assets/index-BTpg-PEJ.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Itxm8yFc.css">
+</head>
+<body>
+  <a class="skip-link" href="#calculator">跳到计算器</a>
+  <div class="production-alert" role="status">潮汐纪年社出品</div>
+  <header class="page-header">
+    <a class="brand" href="./" aria-label="潮汐纪年社计算器首页"><img src="./assets/mark.svg" alt="" width="34" height="34"><span>潮汐纪年社<span class="brand-sub">星盘取名工具</span></span></a>
+    <div class="header-actions"><button class="text-button" id="help-button" type="button">使用说明 <span aria-hidden="true">?</span></button><button class="contact-button" id="contact-button" type="button" aria-haspopup="dialog">联系我们</button></div>
+  </header>
+  <main>
+    <div class="intro">
+      <div><p class="intro-note">五生命点取字法</p><h1>守护天使名号计算器</h1><p class="intro-copy">从出生星盘的五个点位取字，查看名号与完整计算过程。</p></div>
+      <p class="local-note"><span class="local-dot" aria-hidden="true"></span>浏览器内计算<span>出生资料仅用于本次计算</span></p>
+    </div>
+    <div class="workspace" id="calculator">
+      <section class="input-panel" aria-label="计算资料">
+        <div class="input-panel-top"><div class="input-panel-label">星盘资料</div>
+        <div class="tabs" role="tablist" aria-label="输入方式">
+          <button id="tab-auto" class="tab active" role="tab" aria-selected="true" aria-controls="panel-auto" tabindex="0">出生资料<span>自动排盘</span></button>
+          <button id="tab-manual" class="tab" role="tab" aria-selected="false" aria-controls="panel-manual" tabindex="-1">手动点位<span>核对星盘</span></button>
+        </div>
+        </div>
+        <form id="auto-form" novalidate>
+          <div id="panel-auto" role="tabpanel" aria-labelledby="tab-auto">
+            <div class="form-heading"><h2>填写出生资料</h2><button class="small-link" id="auto-example" type="button">试用示例</button></div>
+            <p class="form-description">输入当地钟表时间，夏令时由历史时区自动处理。</p>
+            <div class="two-fields">
+              <div class="field"><label for="birth-date">公历出生日期</label><input id="birth-date" type="date" min="1800-01-01" max="2100-12-31" required><span class="field-hint">支持 1800—2100 年</span></div>
+              <div class="field"><label for="birth-time">出生时间</label><input id="birth-time" type="time" step="1" required><span class="field-hint">24 小时制，可填写秒</span></div>
+            </div>
+            <div class="field place-field">
+              <label for="place-search">出生地点</label>
+              <input id="place-search" type="search" placeholder="搜索城市，如：上海、成都、London" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="place-list" aria-describedby="place-hint">
+              <ul id="place-list" class="place-list" role="listbox" aria-label="地点搜索结果" hidden></ul>
+              <span id="place-hint" class="field-hint" aria-live="polite">中文、英文均可搜索，请选择匹配的城市。</span>
+            </div>
+            <details id="location-details" class="location-details">
+              <summary>查看或调整经纬度与时区</summary>
+              <p class="field-hint">地点使用城市中心坐标。区县未收录时，可直接填出生地的坐标与时区。</p>
+              <div class="two-fields">
+                <div class="field"><label for="latitude">纬度</label><input id="latitude" type="number" min="-89.99" max="89.99" step="any" placeholder="例如 31.23"><span class="field-hint">北纬为正，南纬为负</span></div>
+                <div class="field"><label for="longitude">经度</label><input id="longitude" type="number" min="-180" max="180" step="any" placeholder="例如 121.47"><span class="field-hint">东经为正，西经为负</span></div>
+              </div>
+              <div class="field"><label for="timezone">历史时区</label><input id="timezone" type="text" list="timezone-options" placeholder="例如 Asia/Shanghai" autocomplete="off"><datalist id="timezone-options"></datalist><span class="field-hint">使用地区时区名称，系统按出生日期换算。</span></div>
+            </details>
+            <div id="fold-panel" class="fold-panel" hidden>
+              <label for="time-fold">这一天的钟表时间出现了两次</label>
+              <select id="time-fold"><option value="">请选择对应的那一次</option><option value="0">第一次（时钟回拨之前）</option><option value="1">第二次（时钟回拨之后）</option></select>
+              <p class="field-hint" id="fold-hint">请根据出生记录确认，再重新计算。</p>
+            </div>
+            <button class="primary-button" id="auto-submit" type="submit"><span>计算名号</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M6 6l12 12M6 18 18 6"/></svg></button>
+          </div>
+        </form>
+        <form id="manual-form" novalidate hidden>
+          <div id="panel-manual" role="tabpanel" aria-labelledby="tab-manual">
+            <div class="form-heading"><h2>填写星盘点位</h2><button class="small-link" id="manual-example" type="button">填入课堂示例</button></div>
+            <p class="form-description">使用回归黄道位置。福点由太阳、月亮、上升与昼夜自动计算。</p>
+            <fieldset class="sect-control"><legend>出生昼夜</legend><label><input type="radio" name="sect" value="day" checked>昼生</label><label><input type="radio" name="sect" value="night">夜生</label></fieldset>
+            <div class="point-column-head" aria-hidden="true"><span>点位</span><span>星座</span><span>度</span><span>分</span><span>秒</span></div>
+            <div id="point-inputs"></div>
+            <p class="field-hint manual-hint">朔望点填写出生前最近一次新月或满月时的<strong>月亮位置</strong>。查字时向下取累计整数度。</p>
+            <button class="primary-button" id="manual-submit" type="submit"><span>计算名号</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M6 6l12 12M6 18 18 6"/></svg></button>
+          </div>
+        </form>
+        <div id="form-error" class="form-error" role="alert" tabindex="-1" hidden></div>
+        <p id="busy-status" class="busy-status" role="status" aria-live="polite"></p>
+        <div class="method-footnote"><span>本次使用的规则</span><p>五点取字，昼夜排序，固定添加 <bdi dir="rtl" lang="he">אל</bdi>（el）后缀。</p></div>
+      </section>
+      <section class="result-panel" aria-label="计算结果" aria-live="polite" aria-busy="false">
+        <div id="empty-state" class="empty-state">
+          <div class="five-point-mark" aria-hidden="true">
+            <svg viewBox="0 0 260 260"><circle cx="130" cy="130" r="100"/><circle cx="130" cy="130" r="78"/><path d="m130 30 59 181L35 99h190L71 211Z"/><circle cx="130" cy="30" r="5"/><circle cx="225" cy="99" r="5"/><circle cx="189" cy="211" r="5"/><circle cx="71" cy="211" r="5"/><circle cx="35" cy="99" r="5"/></svg>
+            <span class="diagram-sun">太阳</span><span class="diagram-moon">月亮</span><span class="diagram-asc">上升</span><span class="diagram-fortune">福点</span><span class="diagram-syzygy">朔望</span><strong>五点成名</strong>
+          </div>
+          <h2>名号将从这里展开</h2>
+          <p>填写上方资料，或先试用示例。<br>结果会保留每个点位、字母与取字顺序。</p>
+          <div class="empty-steps"><span>出生星盘</span><i aria-hidden="true"></i><span>五点取字</span><i aria-hidden="true"></i><span>组合名号</span></div>
+        </div>
+        <div id="result" hidden>
+          <div class="result-name-region">
+          <div class="result-topline"><span id="result-context"></span><span id="sect-badge" class="sect-badge"></span></div>
+          <p id="stale-notice" class="stale-notice" hidden>输入已修改，请重新计算以更新结果。</p>
+          <div class="name-display"><p>按本课程方法计算的名号</p><h2 id="hebrew-name" lang="he" dir="rtl"></h2><p id="latin-name" class="latin-name"></p><p id="reading-name" class="reading-name"></p></div>
+          <div id="letter-strip" class="letter-strip" aria-label="按发音顺序排列的字母"></div>
+          <p class="reading-note">字母格按取字顺序从左至右列出，整名按希伯来文从右至左读。拼读采用字母名，连读方式可依课堂指导调整。</p>
+          <div id="result-warnings" class="result-warnings" hidden></div>
+          <div class="result-actions"><button id="save-image" type="button" class="secondary-button">保存结果图</button><button id="print-result" type="button" class="secondary-button">打印／存为 PDF</button><button id="copy-result" type="button" class="text-button">复制记录</button></div>
+          </div>
+          <div class="result-record-region">
+          <div class="calculation-record">
+            <div class="record-heading"><h3>五生命点取字记录</h3><span>累计度数向下取整</span></div>
+            <div class="table-scroll"><table><caption class="sr-only">五生命点位置及对应字母</caption><thead><tr><th scope="col">点位</th><th scope="col">黄道位置</th><th scope="col">累计整数度</th><th scope="col">字母</th><th scope="col">数值</th></tr></thead><tbody id="points-table"></tbody></table></div>
+            <div class="formula-note"><span>福点计算</span><p id="fortune-formula"></p><span id="order-note"></span></div>
+          </div>
+          <details class="meta-details" id="meta-details"><summary>查看排盘与朔望资料</summary><dl id="chart-meta"></dl></details>
+          </div>
+          <div class="result-watermark" aria-label="潮汐纪年社水印"><img src="./assets/tidal-watermark.png" alt="潮汐纪年社" width="240" height="96"></div>
+        </div>
+      </section>
+    </div>
+    <footer class="page-footer"><p>潮汐纪年社 · 五生命点取字法</p><p>计算在本机完成，不建立出生资料档案。 <a href="./licenses.html" target="_blank" rel="noopener">源码与许可</a></p></footer>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="dialog-heading"><h2 id="help-title">怎样使用</h2><button class="icon-button" id="close-help" aria-label="关闭使用说明" type="button">×</button></div>
+    <div class="help-content"><h3>出生资料模式</h3><p>填写公历日期、当地钟表时间，搜索并选择出生城市。系统自动取得日月与上升，判断昼夜，并查找出生前最近一次精确的新月或满月。</p><p>城市坐标取自城市中心。需要更细的出生地时，在“查看或调整经纬度与时区”中修改。时区使用历史地区时区，不要自行先减去夏令时。</p><h3>手动点位模式</h3><p>从排盘软件抄入太阳、月亮、上升，以及出生前最近一次朔望时的月亮位置。选择昼生或夜生，系统自动计算福点。尽量保留原始精度；从结果页显示的度分秒重新抄入时，福点可能因精度变化跨过整度。</p><h3>名号怎样组成</h3><p>五个点位先换算成自白羊座 0° 起的累计黄经，向下取整数，再对照循环排列的 22 个希伯来字母。昼生依太阳、月亮、上升、福点、朔望排序；夜生交换前两位，最后添加 el 后缀，重复字母照常保留。</p><h3>保存与隐私</h3><p>可以保存结果图片、打印或存为 PDF，也可以复制计算记录。输入只保留在当前页面内，刷新后清空；系统不把出生资料发送到外部服务。</p><p class="data-credit">城市资料：<a href="https://www.geonames.org/" target="_blank" rel="noopener noreferrer">GeoNames</a>，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>。主要覆盖人口超过 1.5 万的城市。</p></div>
+  </dialog>
+  <dialog id="contact-dialog" aria-labelledby="contact-title">
+    <div class="dialog-heading"><h2 id="contact-title">联系我们</h2><button class="icon-button" id="close-contact" aria-label="关闭联系我们" type="button" autofocus>×</button></div>
+    <div class="contact-content"><p class="contact-label">微信搜索<span class="wechat-handle">bewealthy717</span></p></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

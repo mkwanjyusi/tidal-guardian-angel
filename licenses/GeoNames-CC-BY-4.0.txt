@@ -1,0 +1,28 @@
+GeoNames city data attribution
+=============================
+
+Source: GeoNames, https://www.geonames.org/
+Data and terms: https://www.geonames.org/export/
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+Legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+This site distributes city-centre records derived from GeoNames via
+geonamescache 3.0.2 in data/places.json. It includes 34,006 city records.
+
+Changes made for this site: selection and validation of records, JSON column
+reformatting, normalized search aliases, additional familiar Chinese city and
+country display names, composed city-centre labels, and duplicate-name labels
+with coordinates. The underlying city-centre coordinates and time-zone IDs
+are taken from the source records. GeoNames does not endorse this site.
+
+The separate geonamescache Python package is licensed under MIT. Its original
+copyright and permission notice are retained in geonamescache-MIT.txt. The MIT
+software license does not replace the CC BY 4.0 attribution for GeoNames data.
+
+中文归属说明
+------------
+城市资料来源为 GeoNames，经 geonamescache 3.0.2 提供，采用 CC BY 4.0。
+本网站筛选和校验了记录，重新编排为 JSON，整理搜索别名，补充常用中文
+城市及国家显示名，并组合城市中心标签和同名城市的坐标标识。
+GeoNames 未对本网站作出背书。原始数据按其来源条款提供。

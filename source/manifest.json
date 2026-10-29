@@ -1,0 +1,26 @@
+{
+  "component": "@kuntay/swisseph",
+  "version": "0.2.2",
+  "license": "AGPL-3.0-or-later",
+  "upstream_repository": "https://github.com/kuntayerkus/swisseph-wasm",
+  "tag": "v0.2.2",
+  "tag_object": "37120810ba62c9d78edf7c0e511495555c4becf2",
+  "commit": "4c4b0f48b15d1795b44ed068e8532fd20d1e145c",
+  "archive": "swisseph-wasm-v0.2.2-4c4b0f48b15d1795b44ed068e8532fd20d1e145c.tar.gz",
+  "download_url": "https://codeload.github.com/kuntayerkus/swisseph-wasm/tar.gz/4c4b0f48b15d1795b44ed068e8532fd20d1e145c",
+  "downloaded_date": "2026-10-29",
+  "sha256": "107cd6cca2d990263996c38ed7f2f4516925bf1ace4e233c1fb18d23ba3456c7",
+  "bytes": 1482865,
+  "archive_entries": 152,
+  "npm_source_files_compared": 23,
+  "npm_source_comparison": "all byte-for-byte identical",
+  "required_source_paths": [
+    "LICENSE",
+    "NOTICE",
+    "vendor/swisseph/LICENSE",
+    "vendor/swisseph/sweph.c",
+    "vendor/swisseph/sweph.h",
+    "tools/build-wasm.mjs",
+    "packages/core/src/"
+  ]
+}

@@ -1,0 +1,21 @@
+潮汐纪年社 · 守护天使名号计算器
+Copyright (C) 2026 潮汐纪年社
+
+This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.
+
+Complete corresponding application source:
+https://github.com/mkwanjyusi/tidal-guardian-angel
+
+Third-party copyrights and licenses are preserved in public/licenses/.
+The exact Swiss Ephemeris WebAssembly dependency source is supplied in
+public/source/ with its commit identity and SHA-256 checksum.
+
+The software license does not grant the right to imply that a derivative
+product is endorsed by 潮汐纪年社 or the third-party authors.
